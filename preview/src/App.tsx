@@ -1,19 +1,28 @@
 import './App.css';
-import { ActionButton, ActionButtonSizes } from 'components';
 import { useCallback, useState } from 'react';
+import { Agreement } from './Agreement/Agreement';
+
+const ButtonSizes = ["large", "medium", "small"] as const;
 
 function App() {
-  const [disabled, setDisabled] = useState<boolean>(false);
+  const [signedCount, setSignedCount] = useState<number>(0);
 
-  const flipDisabled = useCallback(() => {
-    setDisabled(disabled => !disabled);
+  const signNextAgreement = useCallback(() => {
+    setSignedCount(signedCount => signedCount + 1);
   }, []);
+
+  const agreements = Array(signedCount + 1).fill(0).map((_, i) => {
+    return <Agreement 
+      key={i} 
+      onAgree={signNextAgreement} 
+      isSigned={signedCount > i} 
+      buttonSize={ButtonSizes[i % ButtonSizes.length]}
+    />
+  })
 
   return (
     <div className="App">
-      <ActionButton label="Create new" size='small' onClick={flipDisabled}></ActionButton>
-      <ActionButton label="Create new" size='medium'></ActionButton>
-      <ActionButton label="Create new" size='large' disabled={disabled}></ActionButton>
+      {agreements}
     </div>
   );
 }
