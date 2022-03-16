@@ -1,0 +1,42 @@
+@import "../colors.scss";
+
+.big {
+    font-size: 16pt;
+    padding: 8pt 20pt;
+}
+
+.medium {
+    font-size: 14pt;
+    padding: 8pt 16pt;
+}
+
+.small {
+    font-size: 12pt;
+    padding: 4pt 12pt;
+}
+
+.button {
+    background-color: $classicBlue;
+    border: none;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $classicBlueShade1;
+    }
+
+    &:active {
+        background-color: $classicBlueShade2;
+    }
+
+    &:focus {
+        outline: 1pt solid white;
+        outline-offset: -4px;
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: $gray;
+        color: $grayShade;
+    }
+}

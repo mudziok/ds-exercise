@@ -1,0 +1,10 @@
+{
+  "name": "ds-exercise",
+  "version": "0.0.1",
+  "description": "Exercise on creating design systems",
+  "main": "index.js",
+  "author": "mudziok",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["components"]
+}
