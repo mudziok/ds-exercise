@@ -6,5 +6,11 @@
   "author": "mudziok",
   "license": "MIT",
   "private": true,
-  "workspaces": ["components"]
+  "workspaces": ["components", "preview"],
+  "scripts": {
+    "build-components": "cd components&yarn build",
+    "build-preview" : "cd preview&yarn build",
+    "preview" : "cd preview&yarn start",
+    "storybook" : "cd components&yarn storybook"
+  }
 }
