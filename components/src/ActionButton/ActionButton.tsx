@@ -2,27 +2,26 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 
 export const ActionButtonSizes = {
-    big: styles.big,
+    large: styles.big,
     medium: styles.medium,
     small: styles.small,
 } as const;
 
-type ActionButtonSize = typeof ActionButtonSizes[keyof typeof ActionButtonSizes];
-
-interface ActionButtonProps {
+export interface ActionButtonProps {
+    label: string,
     onClick?: () => void,
     disabled?: boolean,
-    size?: ActionButtonSize,
+    size?: "small" | "medium" | "large",
 }
 
-export const ActionButton:FC<ActionButtonProps> = ({children, onClick = () => {}, disabled = false, size = ActionButtonSizes.medium}) => {
+export const ActionButton:FC<ActionButtonProps> = ({label, onClick = () => {}, disabled = false, size = "medium"}) => {
     return (
         <button
-            className={`${styles.button} ${size}`}
+            className={`${styles.button} ${ActionButtonSizes[size]}`}
             onClick={onClick}
             disabled={disabled}
         >
-            {children}
+            {label}
         </button>
     )
 }

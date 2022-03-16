@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <ActionButton size={ActionButtonSizes.small} onClick={flipDisabled}>Create new</ActionButton>
-      <ActionButton size={ActionButtonSizes.medium}>Create new</ActionButton>
-      <ActionButton size={ActionButtonSizes.big} disabled={disabled}>Create new</ActionButton>
+      <ActionButton label="Create new" size='small' onClick={flipDisabled}></ActionButton>
+      <ActionButton label="Create new" size='medium'></ActionButton>
+      <ActionButton label="Create new" size='large' disabled={disabled}></ActionButton>
     </div>
   );
 }

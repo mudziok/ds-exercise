@@ -3,7 +3,7 @@ import { fireEvent, render } from "@testing-library/react"
 
 describe("ActionButton", () => {
     it("renders its children", () => {
-        const { getByText } = render(<ActionButton>Press me</ActionButton>);
+        const { getByText } = render(<ActionButton label="Press me"></ActionButton>);
 
         expect(getByText("Press me")).toBeTruthy();
     });
@@ -11,7 +11,7 @@ describe("ActionButton", () => {
     it("reacts to being pressed", () => {
         const pressCallback = jest.fn();
 
-        const { getByRole } = render(<ActionButton onClick={pressCallback}>Press me</ActionButton>);
+        const { getByRole } = render(<ActionButton label="Active" onClick={pressCallback}></ActionButton>);
         fireEvent.click(getByRole('button'));
 
         expect(pressCallback).toBeCalled();
@@ -20,7 +20,7 @@ describe("ActionButton", () => {
     it("ignores clicks when disabled", () => {
         const pressCallback = jest.fn();
 
-        const { getByRole } = render(<ActionButton onClick={pressCallback} disabled={true}>Press me</ActionButton>);
+        const { getByRole } = render(<ActionButton label="Disabled" onClick={pressCallback} disabled={true}></ActionButton>);
         fireEvent.click(getByRole('button'));
 
         expect(pressCallback).not.toBeCalled();
