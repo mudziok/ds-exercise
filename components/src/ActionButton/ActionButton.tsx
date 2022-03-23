@@ -15,6 +15,10 @@ export interface ActionButtonProps {
 }
 
 export const ActionButton:FC<ActionButtonProps> = ({label, onClick = () => {}, disabled = false, size = "medium"}) => {
+    if (label.length > 100) {
+        return null;
+    }
+
     return (
         <button
             className={`${styles.button} ${ActionButtonSizes[size]}`}

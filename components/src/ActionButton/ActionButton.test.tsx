@@ -25,4 +25,12 @@ describe("ActionButton", () => {
 
         expect(pressCallback).not.toBeCalled();
     });
+
+    it("disallows label to be longer that 100 characters", () => {
+        const longLabel = "a".repeat(101);
+
+        const { queryByRole } = render(<ActionButton label={longLabel} onClick={()=>{}} disabled={false}></ActionButton>);
+
+        expect(queryByRole('button')).toBeNull();
+    })
 })
